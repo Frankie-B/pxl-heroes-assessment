@@ -1,0 +1,126 @@
+.Navbar {
+  .navbar-items {
+    background: #1b1c25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    height: 8rem;
+    .navbar-brand {
+      display: flex;
+      text-decoration: none;
+      .navbar-logo {
+        color: #ebecf1;
+        cursor: pointer;
+        font-size: 2.6rem;
+        justify-self: start;
+        margin-left: 2rem;
+        .beer-icon {
+          color: #ebecf1;
+          font-size: 2.6rem;
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    .navbar-menu-icon i {
+      color: #ebecf1;
+      font-size: 2.6rem;
+      justify-self: start;
+    }
+    .navbar-menu {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      gap: 1rem;
+      justify-content: end;
+      list-style: none;
+      margin-right: 2rem;
+      text-align: center;
+      width: 70vw;
+    }
+
+    .navbar-links {
+      color: #ebecf1;
+      font-size: 1.6rem;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+    }
+
+    .navbar-links:hover {
+      background-color: #206a5d;
+      border-radius: 5px;
+      color: #ebecf1;
+      transition: 0.5s ease-out;
+    }
+
+    .navbar-links-mobile {
+      display: none;
+    }
+
+    .navbar-menu-icon {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .Navbar {
+    .navbar-items {
+      position: relative;
+      .navbar-brand {
+        .navbar-logo {
+          font-size: 1.6rem;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: translate(25%, 100%);
+          .beer-icon {
+            font-size: 1.6rem;
+          }
+        }
+      }
+
+      .navbar-menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 1.8rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+      }
+
+      .navbar-menu {
+        display: flex;
+        flex-direction: column;
+        height: 500px;
+        width: 100%;
+        position: absolute;
+        top: 8rem;
+        left: -100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+      }
+
+      .navbar-menu.active {
+        background: #1f4068;
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+      }
+
+      .navbar-links {
+        display: table;
+        padding: 2rem;
+        text-align: center;
+        width: 100%;
+      }
+
+      .navbar-links:hover {
+        border-radius: 0;
+        background-color: #206a5d;
+      }
+    }
+  }
+}
