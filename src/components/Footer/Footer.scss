@@ -1,0 +1,23 @@
+.Footer {
+  background: #1b1c25;
+  color: #ebecf1;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  height: 5vh;
+  width: 100%;
+  .footer-text {
+    .footer-link {
+      color: #ebecf1;
+      text-decoration: none;
+    }
+
+    .footer-link:hover {
+      color: #206a5d;
+    }
+  }
+}
