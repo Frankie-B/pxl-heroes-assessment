@@ -1,0 +1,90 @@
+:root {
+  --outline: #206a5d;
+}
+
+.Beers {
+  text-align: center;
+  .beers-heading {
+    font-size: 1.5rem;
+    margin: 3rem 0 2rem 0;
+  }
+  .beers-search {
+    .beers-buttons {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      .btn {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .beers-search-form {
+    margin-top: 5rem;
+    .beers-search-name,
+    .beers-search-type {
+      display: flex;
+      justify-content: center;
+      margin: 1rem 0;
+      input[type='text'] {
+        font-family: inherit;
+        margin-right: 1.5rem;
+        padding: 0.8rem 2rem;
+      }
+
+      .btn {
+        background-color: transparent;
+        border: 1px solid var(--outline);
+        border-radius: 5px;
+        color: #206a5d;
+        font-size: 1.3rem;
+        font-weight: bolder;
+        padding: 0.8rem 2rem;
+        transition: all 0.3s ease-out;
+      }
+
+      .btn:hover {
+        background: #206a5d;
+        color: #ebecf1;
+      }
+    }
+  }
+
+  .beers-content {
+    column-count: 2;
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    width: 80%;
+    margin: 0 0 2% 15%;
+    text-align: left;
+    padding: 0 10%;
+    .beers-link-item {
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .Beers {
+    .beers-search-form {
+      .beers-search-name,
+      .beers-search-type {
+        input[type='text'] {
+          font-size: 1.5rem;
+          padding: 1.2rem 2.6rem;
+        }
+
+        .btn {
+          font-size: 1.5rem;
+          padding: 1.2rem 2.6rem;
+        }
+
+        .btn:hover {
+          background: #206a5d;
+          color: #ebecf1;
+          transition: 0.5s ease-out;
+        }
+      }
+    }
+  }
+}

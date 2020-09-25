@@ -1,10 +1,11 @@
 import React from 'react'
-import './Home.scss'
+import '../styles/Home.scss'
 
 const Home = () => {
   return (
     <div className="Home">
       <h1 className="home-heading">Welcome to BrewFinder</h1>
+
       <div className="heading-icon">
         <i className='bx bxs-beer'></i>
       </div>

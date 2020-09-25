@@ -1,0 +1,54 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  .home-heading {
+    font-size: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .heading-icon i {
+    font-size: 7.5rem;
+    margin: 5rem 0;
+  }
+
+  .home-content {
+    .home-text {
+      font-size: 1.5rem;
+      padding: 2rem;
+    }
+
+    .home-text span {
+      border-bottom: 2px solid #206a5d;
+      font-size: 1.5rem;
+      font-weight: bolder;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .Home {
+    .home-heading {
+      font-size: 1.5rem;
+    }
+
+    .heading-icon {
+      font-size: 15rem;
+    }
+
+    .home-content {
+      .home-text {
+        font-size: 2rem;
+        padding: 2rem;
+      }
+
+      .home-text span {
+        border-bottom: 2px solid #206a5d;
+        font-size: 2rem;
+        font-weight: bolder;
+      }
+    }
+  }
+}
