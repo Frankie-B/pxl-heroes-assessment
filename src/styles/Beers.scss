@@ -8,6 +8,7 @@
     font-size: 1.5rem;
     margin: 3rem 0 2rem 0;
   }
+
   .beers-search {
     .beers-buttons {
       display: flex;
@@ -21,7 +22,7 @@
   }
 
   .beers-search-form {
-    margin-top: 5rem;
+    margin-top: 3rem;
     .beers-search-name,
     .beers-search-type {
       display: flex;
@@ -49,17 +50,45 @@
         color: #ebecf1;
       }
     }
+
+    select {
+      font-size: 1.3rem;
+      font-family: inherit;
+      padding: 0.8rem 2rem;
+      option {
+        font-family: inherit;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .beers-num-pages h2 {
+    font-size: 1.2rem;
+    margin: 1rem 0;
   }
 
   .beers-content {
     column-count: 2;
     -moz-column-count: 2;
     -webkit-column-count: 2;
-    width: 80%;
-    margin: 0 0 2% 15%;
+    width: 80vw;
+    margin: 0 0 12% 16%;
     text-align: left;
     padding: 0 10%;
-    .beers-link-item {
+    .beers-link-item a {
+      color: #1f4068;
+      text-decoration: none;
+      h2 {
+        margin: 0.5rem auto;
+      }
+    }
+
+    .beers-link-item a > h2:hover {
+      color: #206a5d;
+    }
+
+    p {
+      display: none;
     }
   }
 }
@@ -83,6 +112,14 @@
           background: #206a5d;
           color: #ebecf1;
           transition: 0.5s ease-out;
+        }
+      }
+    }
+
+    .beers-content {
+      .beers-item {
+        .beers-link-item a > h2 {
+          font-size: 1.8rem;
         }
       }
     }

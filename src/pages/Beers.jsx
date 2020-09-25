@@ -15,7 +15,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 
 export default class Beers extends Component {
-  constructor (props){
+  constructor (props) {
     super(props)
     this.state = {
         select: {
@@ -28,12 +28,12 @@ export default class Beers extends Component {
         beersByCountry:[],
         countryCode:[], 
         page:1,
-        numberOfPages:0
-}
-    this.beerNameInputHandler = this.beerNameInputHandler.bind(this);
+      numberOfPages: 0
+    }
+    this.handleBeerName = this.handleBeerName.bind(this);
     this.getBeersByName = this.getBeersByName.bind(this);
-    this.beerTypeInputHandler = this.beerTypeInputHandler.bind(this);
-    this.handleBeerCountryChange = this.handleBeerCountryChange.bind(this);
+    this.handleBeerType = this.handleBeerType.bind(this);
+    this.handleCountryChange = this.handleCountryChange.bind(this);
     this.getBeersByType = this.getBeersByType.bind(this);
     this.getBeersByCountry = this.getBeersByCountry.bind(this);
     this.getCountryCodes = this.getCountryCodes.bind(this);
@@ -43,13 +43,13 @@ export default class Beers extends Component {
     this.getAllBeersType = this.getAllBeersType.bind(this);
     this.getAllBeersCountry = this.getAllBeersCountry.bind(this);
     this.clearInputFields = this.clearInputFields.bind(this);
-}
+  }
 
   componentDidMount  ()  {
     this.getCountryCodes();
   }
 
-  beerNameInputHandler(e)   {
+  handleBeerName(e)   {
       let inputValue = e.target.value;
       this.setState({
           name: inputValue.toLowerCase(),
@@ -57,7 +57,7 @@ export default class Beers extends Component {
     this.clearSearchResults();
   }
 
-  beerTypeInputHandler(e)  {
+  handleBeerType(e)  {
       let input = e.target.value;
       this.setState({
           type: input.toLowerCase()
@@ -65,7 +65,7 @@ export default class Beers extends Component {
     this.clearSearchResults();
   }
 
-  handleBeerCountryChange(e)  {
+  handleCountryChange(e)  {
       e.preventDefault();
       let updatedCountryCode = this.state.select;
       updatedCountryCode[e.target.name] = e.target.value;
@@ -115,8 +115,9 @@ export default class Beers extends Component {
   getBeersByName()  {
     axios({
       method: 'GET',
-      url: `search/?key=${API_KEY}&p=${this.state.page}&type=beer&q=${this.state.type}`,    
+      url: `search/?key=${API_KEY}&p=${this.state.page}&type=beer&q=${this.state.name}`,    
     }).then((response) => {
+      console.log(response.data.data)
       this.setState({
         beersByName: response.data.data,
         numberOfPages: response.data.numberOfPages
@@ -129,8 +130,9 @@ export default class Beers extends Component {
   getBeersByType()  {
     axios({
       method: 'GET',
-      URL: `search/?key=${API_KEY}&p=${this.state.page}&type=beer&q=${this.state.type}`,    
+      URL: `search/?key=${API_KEY}&p=${this.state.page}&type=beer&q=${this.state.type}`,        
     }).then((response) => {
+      console.log(response.data.data)
       this.setState({
         beersByType: response.data.data,
         numberOfPages: response.data.numberOfPages
@@ -142,27 +144,26 @@ export default class Beers extends Component {
 
   getBeersByCountry()  {
     axios({
-        method: "GET",
-        url: `beers/?withBreweries=Y&key=${API_KEY}&p=${this.state.page}`,      
+      method: "GET",
+      url: `beers/?withBreweries=Y&key=${API_KEY}&p=${this.state.page}`,            
     })
     .then(response => {
         this.setState({
-            beersByCountry: response.data.data,
-            numberOfPages: response.data.numberOfPages
-        })
-        console.log(this.state.page)
-        this.removeDuplicates()
+        beersByCountry: response.data.data,
+        numberOfPages: response.data.numberOfPages
+      })
+      console.log(this.state.page)
+      this.removeDuplicates()
     })
     .catch((error)=> {
-            console.log('Oops looks like that location does not exist', error)
+      console.log('Oops looks like that location does not exist', error)
     })
   }
-
 
   getCountryCodes() {
     axios({
         method: "GET",
-        url: `locations/?key=${API_KEY}`,      
+        url: `locations/?key=${API_KEY}`,         
     })
     .then(response => {
         let code = [...new Set(response.data.data.map(item => item.countryIsoCode))]
@@ -216,6 +217,8 @@ export default class Beers extends Component {
     return (
       <div className="Beers">
         <h1 className="beers-heading">You can search for beers by Name, Type or Country</h1>
+
+
         <div className="beers-search">
           <div className="beers-buttons">
             <Button onClick={this.clearInputFields}>Clear Fields</Button>
@@ -223,19 +226,19 @@ export default class Beers extends Component {
           </div>
           <div className="beers-search-form">
             <div className="beers-search-name">
-              <Input type={`text`} name={`beerName`} placeholder={`Search beers by name`} value={this.state.name} onChange={this.beerNameInputHandler} />
+              <Input type={`text`} name={`beerName`} placeholder={`Search beers by name`} value={this.state.name} onChange={this.handleBeerName} />
               <Button onClick={this.getAllBeersName}>Search</Button>
             </div>
             <div className="beers-search-type">
-              <Input type={`text`} placeholder={`Search beers by type`} value={this.state.type} onChange={this.beerTypeInputHandler}/>
-              <Button>Search</Button>
+              <Input type={`text`} name={`beerType`} placeholder={`Search beers by type`} value={this.state.type} onChange={this.handleBeerType}/>
+              <Button onClick={this.getAllBeersType}>Search</Button>
             </div>
             <div className="beers-dropdown-select">
               <select
                 name="selectedCode"
                 value={this.state.select.selectedCode.toString()}
-                onChange={this.handleBeerCountryChange}
-                onClick={this.getCountryCodeList}>
+                onChange={this.handleCountryChange}
+                onClick={this.getCountryCodes}>
                 <option value={``} defaultValue>Choose a country</option>
                 {this.state.countryCode.map((item, index) => (
                   <option name="selectedCode" key={index} value={item}>{item}</option>
@@ -244,14 +247,16 @@ export default class Beers extends Component {
             </div>
           </div>
         </div>
-        {/* Rendering the results */}
+
         <div className="beers-num-pages">
           {this.state.numberOfPages >= 1 && this.state.page <= (this.state.numberOfPages) + 1 ? (
-            <h5>{this.state.page - 1} / {this.state.numberOfPages}</h5>
+            <h2>{this.state.page - 1} / {this.state.numberOfPages}</h2>
           ) : (
-              <h5>Page not found</h5>
+              <h2> </h2>
           )}
         </div>
+
+
         <div className="beers-content">
           {this.state.beersByName ? (
               <div className="beers-item">
@@ -260,17 +265,17 @@ export default class Beers extends Component {
                   {((item.name).toLowerCase()).includes((this.state.name).toLowerCase()) ? (
                     <div className="beers-link">
                       <Link to={`/beer/${item.id}`}>
-                        <h5 className="beers-item-name">{item.name}</h5>
+                        <h2 className="beers-item-name">{item.name}</h2>
                       </Link>
                     </div>
                   ) : (
-                      <p>not exists</p>
+                      <p>Whoops looks like the fidge is empty</p>
                     )}
                 </div>
               ))}
             </div>
           ) : (
-              <h4>Sorry, we do not have that beer</h4>
+              <h2>Sorry, we do not have that beer</h2>
             )}
           
           {this.state.beersByType ? (
@@ -281,10 +286,10 @@ export default class Beers extends Component {
                     <div className="beers-link">
                       {((item.style.name).toLowerCase()).includes((this.state.type).toLocaleLowerCase()) ? (
                         <Link to={`/beer/${item.id}`}>
-                          <h5>{item.name}</h5>
+                          <h2>{item.name}</h2>
                         </Link>
                       ) : (
-                          <h5>not exist</h5>
+                          <h2>Whoops looks like the fidge is empty</h2>
                       )}
                     </div>
                   ) : (
@@ -294,18 +299,19 @@ export default class Beers extends Component {
               ))}
             </div>
           ) : (
-              <h5>Sorry, we do not have that type</h5>
+              <h2>Sorry, we do not have that type</h2>
             )}
+          
           {this.state.beersByCountry ? (
             <div className="beers-item">
               {this.state.beersByCountry.map((item) => (
                 <div className="beers-link-item" key={item.id}>
                   {((item.breweries[0].locations[0].countryIsoCode).includes(this.state.select.selectedCode)) ? (
                     <Link to={`/beer/${item.id}`}>
-                      <h5>{item.name}</h5>
+                      <h2>{item.name}</h2>
                     </Link>
                   ) : (
-                      <p>not exists</p>
+                      <p>Whoops looks like the fidge is empty</p>
                     )}
                 </div>
               ))}
