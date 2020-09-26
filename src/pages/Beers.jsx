@@ -127,18 +127,35 @@ export default class Beers extends Component {
     })
   }
 
-  getBeersByType()  {
+  getBeersByType() {    
     axios({
       method: 'GET',
-      URL: `search/?key=${API_KEY}&p=${this.state.page}&type=beer&q=${this.state.type}`,        
-    }).then((response) => {
+      url: `search/?key=${API_KEY}&p=${this.state.page}&type=beer&q=${this.state.type}`,
+    }).then((response) => {      
       console.log(response.data.data)
       this.setState({
         beersByType: response.data.data,
         numberOfPages: response.data.numberOfPages
       })
     }).catch((error) => {
-      console.log('Oops looks like the fridge is empty', error)
+      console.log('Oops looks like the fridge is empty', error);      
+    })
+  }
+
+    getCountryCodes() {
+    axios({
+        method: "GET",
+        url: `locations/?key=${API_KEY}`,         
+    })
+    .then(response => {
+        let code = [...new Set(response.data.data.map(item => item.countryIsoCode))]
+        this.setState({
+            countryCode: code
+        })
+        console.log(this.state.countryCode.toString())
+    })
+    .catch((error)=> {
+            console.log('Oops looks like that location does not exist', error)
     })
   }
 
@@ -157,23 +174,6 @@ export default class Beers extends Component {
     })
     .catch((error)=> {
       console.log('Oops looks like that location does not exist', error)
-    })
-  }
-
-  getCountryCodes() {
-    axios({
-        method: "GET",
-        url: `locations/?key=${API_KEY}`,         
-    })
-    .then(response => {
-        let code = [...new Set(response.data.data.map(item => item.countryIsoCode))]
-        this.setState({
-            countryCode: code
-        })
-        console.log(this.state.countryCode.toString())
-    })
-    .catch((error)=> {
-            console.log('Oops looks like that location does not exist', error)
     })
   }
 
@@ -263,7 +263,7 @@ export default class Beers extends Component {
               {this.state.beersByName.map((item) => (
                 <div key={item.id}>
                   {((item.name).toLowerCase()).includes((this.state.name).toLowerCase()) ? (
-                    <div className="beers-link">
+                    <div className="beers-link-item">
                       <Link to={`/beer/${item.id}`}>
                         <h2 className="beers-item-name">{item.name}</h2>
                       </Link>
@@ -283,13 +283,13 @@ export default class Beers extends Component {
               {this.state.beersByType.map((item) => (
                 <div key={item.id}>
                   {item.style ? (
-                    <div className="beers-link">
+                    <div className="beers-link-item">
                       {((item.style.name).toLowerCase()).includes((this.state.type).toLocaleLowerCase()) ? (
                         <Link to={`/beer/${item.id}`}>
                           <h2>{item.name}</h2>
                         </Link>
                       ) : (
-                          <h2>Whoops looks like the fidge is empty</h2>
+                          <p>Whoops looks like the fidge is empty</p>
                       )}
                     </div>
                   ) : (
