@@ -12,11 +12,9 @@ import { Link } from 'react-router-dom'
 
 // const BASE_URL = process.env.REACT_APP_API_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;
-
-
 export default class Beers extends Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
         select: {
             selectedCode:"" 
@@ -293,7 +291,7 @@ export default class Beers extends Component {
                       )}
                     </div>
                   ) : (
-                      <p>Loading....</p>
+                      <p><i className='bx bx-beer'></i></p>
                   )}
                 </div>
               ))}
