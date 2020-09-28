@@ -6,7 +6,7 @@ export const MenuItems = [
   },
     {
     title: 'Breweries',
-    url: '/breweries',
+    url: '/brewery',
     className: 'navbar-links',
   },
 ]; 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { MenuItems } from './MenuItems';
 import { Link } from 'react-router-dom'
-// import Button from '../controls/Button'
 import './Navbar.scss'
 
 
@@ -33,7 +32,6 @@ class Navbar extends Component {
               )
             })}
           </ul>
-          {/* <Button /> */}
         </nav>  
       </div>
     )

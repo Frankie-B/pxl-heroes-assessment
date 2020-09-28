@@ -1,0 +1,38 @@
+.Brewery {
+  margin-bottom: 5rem;
+  text-align: center;
+  .brewery-heading {
+    font-size: 1.5rem;
+    margin: 3rem 0 2rem 0;
+  }
+
+  .brewery-content {
+    select {
+      font-size: 1.3rem;
+      font-family: inherit;
+      padding: 0.8rem 2rem;
+      option {
+        font-family: inherit;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .Brewery {
+    .brewery-heading {
+      font-size: 2rem;
+    }
+
+    .brewery-item > a:hover {
+      color: #206a5d;
+    }
+
+    .brewery-content {
+      .brewery-item > a > h2 {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

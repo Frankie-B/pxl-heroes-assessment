@@ -2,15 +2,10 @@ import React, { Component } from 'react'
 import Button from '../components/controls/Buttons/Button'
 import Input from '../components/controls/Forms/Inputs/Input'
 import axios from 'axios'
-import _ from 'lodash'
-import '../styles/Beers.scss'
 import { Link } from 'react-router-dom'
-
-// console.log(process.env.REACT_APP_API_URL)
-// console.log(process.env.REACT_APP_API_KEY)
+import '../styles/Beers.scss'
 
 
-// const BASE_URL = process.env.REACT_APP_API_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;
 export default class Beers extends Component {
   constructor (props) {
@@ -115,7 +110,6 @@ export default class Beers extends Component {
       method: 'GET',
       url: `search/?key=${API_KEY}&p=${this.state.page}&type=beer&q=${this.state.name}`,    
     }).then((response) => {
-      console.log(response.data.data)
       this.setState({
         beersByName: response.data.data,
         numberOfPages: response.data.numberOfPages
@@ -130,7 +124,6 @@ export default class Beers extends Component {
       method: 'GET',
       url: `search/?key=${API_KEY}&p=${this.state.page}&type=beer&q=${this.state.type}`,
     }).then((response) => {      
-      console.log(response.data.data)
       this.setState({
         beersByType: response.data.data,
         numberOfPages: response.data.numberOfPages
@@ -150,7 +143,6 @@ export default class Beers extends Component {
         this.setState({
             countryCode: code
         })
-        console.log(this.state.countryCode.toString())
     })
     .catch((error)=> {
             console.log('Oops looks like that location does not exist', error)
@@ -167,20 +159,9 @@ export default class Beers extends Component {
         beersByCountry: response.data.data,
         numberOfPages: response.data.numberOfPages
       })
-      console.log(this.state.page)
-      this.removeDuplicates()
     })
     .catch((error)=> {
       console.log('Oops looks like that location does not exist', error)
-    })
-  }
-
-  removeDuplicates ()  {
-    if(this.state.breweries){
-        var unique = _.uniqBy(this.state.breweries,'breweryId')
-    }
-    this.setState({
-        breweries:unique
     })
   }
 
