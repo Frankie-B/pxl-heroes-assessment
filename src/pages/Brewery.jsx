@@ -53,7 +53,6 @@ export default class Brewery extends Component {
                 breweries: response.data.data
             })
             this.returnUnique()  
-            console.log(this.state.breweries)
         })        
         .catch((error)=> {
                 console.log("These are not the breweries you are looking for", error)
@@ -70,7 +69,6 @@ export default class Brewery extends Component {
         this.setState({
           countryCode: code
         })
-        console.log(this.state.countryCode.toString())
       })
       .catch((error) => {
         console.log("These are not the breweries you are looking for", error)

@@ -8,5 +8,5 @@ export const MenuItems = [
     title: 'Breweries',
     url: '/brewery',
     className: 'navbar-links',
-  },
+  },   
 ]; 
