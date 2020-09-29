@@ -1,4 +1,105 @@
 .BreweryDetail {
-  color: red;
+  margin-bottom: 5rem;
+  padding: 0.8rem 2rem;
   text-align: center;
+  .brewery-detail-content {
+    .brewery-description p {
+      font-size: 0.75rem;
+    }
+    .brewery-heading {
+      margin-top: 2rem;
+    }
+
+    .brewery-img {
+      .brewery-image-container {
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .brewery-website:hover {
+      color: #206a5d;
+    }
+
+    .brewery-website h4 {
+      margin: 1rem 0;
+    }
+  }
+
+  .brewery-detail-beers {
+    margin: 0 auto;
+    padding: 0.8rem 1rem;
+    .brewery-beers {
+      .brewery-subheading {
+        font-size: 1.3rem;
+        margin: 1rem 0;
+      }
+
+      .brewery-loading i {
+        font-size: 7rem;
+        animation-name: spin;
+        animation-duration: 5000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    }
+
+    .brewery-detail-beer {
+      column-count: 2;
+      -moz-column-count: 2;
+      -webkit-column-count: 2;
+      margin: 0 0 15% 13%;
+      text-align: left;
+      padding: 0.8rem 1rem;
+      div {
+        a {
+          color: #1f4068;
+          text-decoration: none;
+          h5 {
+            font-size: 1rem;
+            margin: 0.5rem auto;
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .BreweryDetail {
+    .brewery-detail-content {
+      margin: 0 auto;
+      .brewery-description p {
+        font-size: 1rem;
+        margin: 0 auto;
+        width: 80%;
+      }
+    }
+    .brewery-detail-beers {
+      margin: 0 auto;
+      .brewery-detail-beer {
+        margin: 0 auto;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        width: 50%;
+        div > a > h5 {
+          font-size: 1.3rem;
+        }
+      }
+
+      .brewery-detail-beer div > a:hover {
+        color: #206a5d;
+      }
+    }
+  }
 }

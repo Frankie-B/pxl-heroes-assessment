@@ -72,16 +72,16 @@
     column-count: 2;
     -moz-column-count: 2;
     -webkit-column-count: 2;
-    width: 75vw;
-    margin: 0 0 12% 20%;
+    margin: 0 0 15% 10%;
     text-align: left;
-    padding: 0 0.2rem;
+    padding: 0.8rem 1rem;
     .beers-link-item a {
       color: #1f4068;
       text-decoration: none;
       h2 {
         font-size: 1rem;
         margin: 0.5rem auto;
+        width: 60%;
       }
     }
 
@@ -138,7 +138,7 @@
     .beers-content {
       .beers-item {
         .beers-link-item a > h2 {
-          font-size: 1.8rem;
+          font-size: 1.3rem;
         }
       }
     }

@@ -52,16 +52,17 @@ export default class BreweryDetail extends Component {
               console.log("This is not the  brewery that you are looking for", error)
       })
   }
+
   render() {
     let beerList;
     if(this.state.beers.length === 0){
-          beerList = <h2>Loading...</h2>
+          beerList = <h4 className="brewery-loading"><i className='bx bx-beer'></i></h4>
       } 
       else if(this.state.beers.length === 1){
-          beerList = <h2>The brewery produces <span>{this.state.beers.length}</span> beer: </h2>
+          beerList = <h4 className="brewery-subheading">The brewery produces {this.state.beers.length} beer: </h4>
       } 
       else {
-          beerList = <h2>The brewery produces <span>{this.state.beers.length}</span> beers: </h2>
+          beerList = <h4 className="brewery-subheading">The brewery produces {this.state.beers.length} beers: </h4>
       }
 
     let breweryDetail = this.state.brewery;
@@ -71,7 +72,7 @@ export default class BreweryDetail extends Component {
           <div className="brewery-detail-content">
             <h1 className="brewery-heading">{breweryDetail.name}</h1>
             {breweryDetail.established ? (
-              <h5 className="brewery-detail-heading"><span>Established: </span>{breweryDetail.established}</h5>
+              <h4 className="brewery-detail-heading">Established: {breweryDetail.established}</h4>
             ) : (
                 <p></p>
               )}
@@ -86,7 +87,7 @@ export default class BreweryDetail extends Component {
                   <p></p>
               )}
             </div>
-            <a href={breweryDetail.website} rel="noopener noreferrer" target="_blank">
+            <a className="brewery-website" href={breweryDetail.website} rel="noopener noreferrer" target="_blank">
               <h4>{breweryDetail.website}</h4>
             </a>
             <div className="brewery-description">
@@ -97,7 +98,7 @@ export default class BreweryDetail extends Component {
             <div className="brewery-beers">
               {beerList}
             </div>
-            <div className="brewery-detail">
+            <div className="brewery-detail-beer">
               {this.state.beers.map((item) => (
                 <div key={item.id}>
                   <Link to={`/beer/${item.id}`}><h5>{item.name}</h5></Link>
@@ -117,14 +118,3 @@ export default class BreweryDetail extends Component {
     }
   }
 }
-
-
-// export default class BreweryDetail extends Component {
-//   render() {
-//     return (
-//       <div>
-//         Hello
-//       </div>
-//     )
-//   }
-// }
