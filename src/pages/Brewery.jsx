@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+// eslint-disable-next-line
 import _ from 'lodash'
 import axios from 'axios'
 import '../styles/Brewery.scss'

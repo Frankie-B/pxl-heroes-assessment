@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Button from '../components/controls/Buttons/Button'
 import Input from '../components/controls/Forms/Inputs/Input'
+// eslint-disable-next-line
+import _ from 'lodash'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import '../styles/Beers.scss'
@@ -8,6 +10,7 @@ import '../styles/Beers.scss'
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 export default class Beers extends Component {
+  _isMounted = false;
   constructor (props) {
     super(props);
     this.state = {
@@ -39,7 +42,15 @@ export default class Beers extends Component {
   }
 
   componentDidMount  ()  {
+    this._isMounted = true;
     this.getCountryCodes();
+  }
+
+  componentWillUnmount() {
+  // React state update on an unmounted component error fix from Stack overflow
+    this.setState = (state,callback)=>{
+    return;
+    };
   }
 
   handleBeerName(e)   {

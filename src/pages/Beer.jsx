@@ -44,8 +44,8 @@ export default class Beer extends Component {
               <div className="beer-info">
                 <p className="beer-subheading"><span>Style: </span>{beer.style.name}</p>
                 <p className="beer-subheading">
-                  <span>Brewed by: </span>&nbsp;
-                  <Link to={`breweries/brewery/${beer.breweries[0].id}`}>{beer.breweries[0].name} ({beer.breweries[0].locations[0].country.displayName})</Link>
+                  <span>Brewed by: </span>
+                  <Link to={`/brewery/${beer.breweries[0].id}`}>{beer.breweries[0].name} ({beer.breweries[0].locations[0].country.displayName})</Link>
                 </p>
                 <div className="beer-abv-ibu">
                   <p className="beer-subheading"><span>ABV: </span>{beer.abv}%</p>
