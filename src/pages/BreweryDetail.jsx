@@ -30,10 +30,9 @@ export default class BreweryDetail extends Component {
               brewery: response.data.data
           })
           this.getBeers();
-          console.log(this.state.brewery);
       })
       .catch((error)=> {
-              console.log("This is not the  brewery that you are looking for", error)
+        console.log("This is not the  brewery that you are looking for", error)
       })
   }
 
@@ -46,10 +45,9 @@ export default class BreweryDetail extends Component {
           this.setState({
               beers: response.data.data
           })
-          console.log(this.state.beers)
       })
       .catch((error)=> {
-              console.log("This is not the  brewery that you are looking for", error)
+        console.log("This is not the  brewery that you are looking for", error)
       })
   }
 

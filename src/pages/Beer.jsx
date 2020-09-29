@@ -28,7 +28,6 @@ export default class Beer extends Component {
       this.setState({
         beer: response.data.data,
       })
-      console.log(this.state.beer);
     }).catch((error) => {
       console.log('Looks like someone needs to do a beer run ', error);
     })

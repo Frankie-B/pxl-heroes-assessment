@@ -145,7 +145,7 @@ export default class Beers extends Component {
         })
     })
     .catch((error)=> {
-            console.log('Oops looks like that location does not exist', error)
+      console.log('Oops looks like that location does not exist', error)
     })
   }
 

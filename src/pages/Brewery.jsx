@@ -55,7 +55,7 @@ export default class Brewery extends Component {
             this.returnUnique()  
         })        
         .catch((error)=> {
-                console.log("These are not the breweries you are looking for", error)
+          console.log("These are not the breweries you are looking for", error)
         })
     }
 
