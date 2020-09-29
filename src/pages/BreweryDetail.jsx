@@ -23,7 +23,7 @@ export default class BreweryDetail extends Component {
   getBrewery() {
       axios({
           method: "GET",
-          url: `brewery/${this.props.match.params.id}/?key=${API_KEY}`
+          url: `${this.props.match.params.id}/?key=${API_KEY}`
       })
       .then(response => {
           this.setState({
@@ -40,7 +40,7 @@ export default class BreweryDetail extends Component {
   getBeers() {
       axios({
           method: "GET",
-          url: `brewery/${this.props.match.params.id}/beers/?key=${API_KEY}`
+          url: `${this.props.match.params.id}/beers/?key=${API_KEY}`
       })
       .then(response => {
           this.setState({
@@ -117,3 +117,14 @@ export default class BreweryDetail extends Component {
     }
   }
 }
+
+
+// export default class BreweryDetail extends Component {
+//   render() {
+//     return (
+//       <div>
+//         Hello
+//       </div>
+//     )
+//   }
+// }

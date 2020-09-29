@@ -117,7 +117,7 @@ export default class Brewery extends Component {
         {breweryCountryList}
         {this.state.breweries.map((item) => (
           <div className="brewery-item" key={item.id}>
-            <Link to={`breweries/brewery/${item.breweryId}`}><h3>{item.brewery.name}</h3></Link>
+            <Link to={`brewery/${item.breweryId}`}><h3>{item.brewery.name}</h3></Link>
           </div>
         ))}
       </div>
