@@ -8,11 +8,15 @@
     }
     .beer-info {
       .beer-subheading {
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
 
       .beer-subheading > span {
         font-weight: bolder;
+      }
+
+      .beer-subheading > a {
+        font-size: 0.8rem;
       }
 
       .beer-subheading > a:hover {
