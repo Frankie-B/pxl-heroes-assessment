@@ -211,7 +211,7 @@ export default class Beers extends Component {
 
         <div className="beers-search">
           <div className="beers-buttons">
-            <Button onClick={this.clearInputFields}>Clear Fields</Button>
+            <Button onClick={this.clearInputFields}>Clear Search</Button>
             <Button onClick={this.getNextPage}>Next Page</Button>
           </div>
           <div className="beers-search-form">
@@ -240,7 +240,7 @@ export default class Beers extends Component {
 
         <div className="beers-num-pages">
           {this.state.numberOfPages >= 1 && this.state.page <= (this.state.numberOfPages) + 1 ? (
-            <h2>{this.state.page - 1} / {this.state.numberOfPages}</h2>
+            <h2>Page {this.state.page - 1} of {this.state.numberOfPages}</h2>
           ) : (
               <h2> </h2>
           )}

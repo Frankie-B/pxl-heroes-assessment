@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import '../styles/Home.scss'
 
 const Home = () => {
@@ -11,7 +12,7 @@ const Home = () => {
       </div>
 
       <div className="home-content">
-        <p className="home-text">To see our list of <span> beers </span> or <span>breweries</span> follow the links in the navigation.</p>
+        <p className="home-text">Here is a list our list of <Link to={`/beers`}> beers </Link> and <Link to={`/brewery`}>breweries</Link>.</p>
       </div>
    </div>
   )

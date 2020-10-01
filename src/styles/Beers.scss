@@ -136,7 +136,10 @@
     }
 
     .beers-content {
+      margin: 0 0 0 25%;
+      width: 60%;
       .beers-item {
+        // width: 50%;
         .beers-link-item a > h2 {
           font-size: 1.3rem;
         }

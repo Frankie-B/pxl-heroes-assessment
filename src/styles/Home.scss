@@ -20,10 +20,14 @@
       padding: 2rem;
     }
 
-    .home-text span {
-      border-bottom: 2px solid #206a5d;
-      font-size: 1.5rem;
+    .home-text a {
+      color: #1f4068;
+      font-size: 1.7rem;
       font-weight: bolder;
+    }
+
+    .home-text a:hover {
+      border-bottom: 2px solid #206a5d;
     }
   }
 }
